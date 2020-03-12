@@ -31,7 +31,7 @@ sass.compiler = require('node-sass');
 
 function styles() {
 	return gulp.src('./src/css/style.scss')
-				.pipe(sourcemaps.init())
+				/*.pipe(sourcemaps.init())*/
 				.pipe(concat('style.css'))		
 				.pipe(autoprefixer({
 		            overrideBrowsersList: ['> 0.1%'],
@@ -43,7 +43,7 @@ function styles() {
 		        }))
 		        */
 		        .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
-		        .pipe(sourcemaps.write())
+		        /*.pipe(sourcemaps.write())*/
 				.pipe(gulp.dest('./assets/css'))
 				.pipe(browserSync.stream());
 }

@@ -614,7 +614,7 @@ main {
 
         .search {
             position: relative;
-            z-index: 1;
+            z-index: 4;
             margin-bottom: 68px;
     
             @media (max-width: $adaptive-width-tablet-middle) {
@@ -642,7 +642,7 @@ main {
                     width: 100%;
                     background: #FBFBFB;
                     box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.25);
-                    color: #B8B8B8;
+                    color: #585858;
                     text-align: left;  
 
                     &::-webkit-input-placeholder { color: #B8B8B8; }
@@ -655,9 +655,50 @@ main {
                     }
 
                     @media (max-width: $adaptive-width-mobile) {
-                        padding-right: 140px;
+                        padding-right: 156px;
                     }          
-                }            
+                }   
+
+                select,
+                .ui-selectmenu-button {
+                    position: absolute;
+                    top: 0;
+                    right: 134px;
+                    height: 55px;
+                    width: 125px;
+                    box-sizing: border-box;
+                    padding: 17px 19px 17px 19px;
+                    font-size: 16px;
+                    margin: 0;
+                    border: 0;
+                    background-color: #FBFBFB;
+                    border-left: 1px solid #D4D4D4;
+                    @include radius(0);
+
+                    @media (max-width: $adaptive-width-tablet) {
+                        padding-right: 11px;
+                    }
+                    @media (max-width: $adaptive-width-mobile) {
+                        height: 45px;           
+                        padding: 12px 10px;
+                        width: 98px;
+                        right: 43px;
+                        margin: 0 0 20px;
+                        font-size: 14px;
+                    }
+                    .ui-selectmenu-icon.ui-icon.ui-icon-triangle-1-s {
+                        @extend .transition-opacity;
+                        @media (max-width: $adaptive-width-tablet-small) {
+                            margin-top: 7px;
+                        }
+                    }
+                    &:hover {
+                        .ui-selectmenu-icon.ui-icon.ui-icon-triangle-1-s {
+                            opacity: 0.75;
+                            @extend .transition-opacity;
+                        }
+                    }
+                }         
               
                 .search-filter {
                     display: block;
@@ -1845,14 +1886,62 @@ footer {
             box-sizing: border-box;
             @include radius(100px);
             background-color: #fff;
-            padding: 17px 182px 17px 27px;
+            padding: 17px 300px 17px 27px;
             font-size: 18px;
             color: #373737;
 
             @media (max-width: $adaptive-width-tablet-small) {
-                padding: 15px 75px 15px 18px;
+                padding: 15px 175px 15px 18px;
                 height: 45px;
                 font-size: 14px;
+            }
+
+            @media (max-width: $adaptive-width-mobile) {
+                padding-right: 165px;
+            }
+        }
+
+        select,
+        .ui-selectmenu-button {
+            position: absolute;
+            top: 0;
+            right: 134px;
+            height: 55px;
+            width: 125px;
+            box-sizing: border-box;
+            padding: 17px 19px 17px 19px;
+            font-size: 16px;
+            margin: 0;
+            border: 0;
+            border-left: 1px solid #D4D4D4;
+            @include radius(0);
+
+            @media (max-width: $adaptive-width-tablet) {
+                padding-right: 11px;
+            }
+            @media (max-width: $adaptive-width-tablet-small) {
+                height: 45px;           
+                padding: 12px 10px;
+                width: 98px;
+                right: 43px;
+                margin: 0 0 20px;
+                font-size: 14px;
+            }
+            @media (max-width: $adaptive-width-mobile) {
+                width: 90px;
+                padding: 12px 7px;
+            }
+            .ui-selectmenu-icon.ui-icon.ui-icon-triangle-1-s {
+                @extend .transition-opacity;
+                @media (max-width: $adaptive-width-tablet-small) {
+                    margin-top: 7px;
+                }
+            }
+            &:hover {
+                .ui-selectmenu-icon.ui-icon.ui-icon-triangle-1-s {
+                    opacity: 0.75;
+                    @extend .transition-opacity;
+                }
             }
         }
 
@@ -1903,7 +1992,7 @@ footer {
     display: none;
     position: absolute;
     top: 50%;
-    right: 154px;
+    right: 278px;
     margin-top: -7px;
     background-image: url('../images/ico_clear.svg');
     width: 14px;
@@ -1914,8 +2003,12 @@ footer {
 
     @media (max-width: $adaptive-width-tablet-small) {
         top: 15px;
-        right: 55px;
+        right: 155px;
         margin: 0;
+    }
+
+    @media (max-width: $adaptive-width-mobile) {
+        right: 143px;
     }
 
     &:hover {

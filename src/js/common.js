@@ -133,7 +133,7 @@ function initElements(element) {
 		hideModal(this, false);
 	});
 
-	//$element.find('.tabs, .js-tabs').lightTabs();
+	$element.find('.tabs, .js-tabs').lightTabs();
 
 	$element.find('.js-scroll').each(function(index, block) {
 		if (!$(block).attr('data-on-demand')) {

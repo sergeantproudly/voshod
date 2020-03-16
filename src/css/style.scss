@@ -601,11 +601,11 @@ header {
     margin-top: -54px;
 
     @media (max-width: $adaptive-width-tablet-halfsmall) {
-        margin-bottom: -34px;
+        margin-top: -34px;
     }
 
     @media (max-width: $adaptive-width-mobile) {
-        margin-bottom: -24px;
+        margin-top: -24px;
     }
 }
 
@@ -1411,6 +1411,7 @@ main {
 
                     @media (max-width: $adaptive-width-mobile) {
                         margin-bottom: 5px;
+                        align-items: flex-start;
                     }
 
                     &:first-child {
@@ -1427,6 +1428,10 @@ main {
                         width: 100%;
                         max-width: 100%;
                         max-height: 100%;
+
+                        @media (max-width: $adaptive-width-mobile) {
+                            height: auto;
+                        }
                     }
                 }
             }

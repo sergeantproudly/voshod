@@ -755,7 +755,13 @@ button.ui-button::-moz-focus-inner {
 	-khtml-border-radius: 4px;
 	border-radius: 4px;
 	border: 0;
+	max-height: 330px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+
+	@media (max-width: $adaptive-width-mobile) {
+		max-height: 260px;
+	}
+
 }
 .ui-selectmenu-menu .ui-menu li{
 	padding: 9px 12px;

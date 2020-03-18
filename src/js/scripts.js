@@ -238,4 +238,13 @@ $(document).ready(function(){
 		window.open(api_url, title, 'width=640,height=480,status=no,toolbar=no,menubar=no');
 	});
 
+	// CATALOGUE
+	if ($('#catalogue').length) {
+		$('#catalogue ul>li>ul>li').each(function(index, li) {
+			if ($(li).children('ul').length) {
+				$(li).addClass('has-child');
+			}
+		});
+	}
+
 });

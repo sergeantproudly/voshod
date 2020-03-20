@@ -44,6 +44,9 @@
                     </ul>       
                 </nav>
             </div>
+            <a href="#modal-profile" id="btn-login" class="js-modal-link">
+                    <span>Авторизация</span>
+                </a>
         </div>   
     </header>
 
@@ -61,6 +64,7 @@
                     <button class="search-btn"><span>Искать</span></button> 
                 </form>
                 <div class="example-search"><p>Популярный запрос: <a href="#">Противовоздушная оборона Москвы</a></p></div>
+                <div class="cb-line"><input type="checkbox" name="similar" id="search-similar" checked="checked"><label for="search-similar">Искать похожие по смыслу</label></div>
             </div>
             <div class="main-slider">
                 <h3 class="slider-head">Источники документов</h3>
@@ -127,7 +131,6 @@
         <div class="holder photo-wrap">
             <div class="photo-head">
                 <h2>Фотографии дня</h2>
-                <p>Здесь показаны фотографии за <span>24 ноября 1944&nbsp;г.</span></p>
             </div>
             <div class="photo-items">
                 <div class="line">
@@ -209,6 +212,74 @@
     </footer>
 
     <div class="modal-fadeout"></div>
+
+    <div class="modal-wrapper" id="modal-profile">
+        <div class="modal">
+            <div class="contents">
+                <div class="modal-close" title="Close"></div>
+
+                <div class="h1">Авторизация</div>
+
+                <div class="tabs">
+                    <ul>
+                        <li><a href="#modal-profile-authorisation" data-header="Авторизация" class="tab-act">Вход</a></li>
+                        <li><a href="#modal-profile-registration" data-header="Регистрация">Регистрация</a></li>
+                    </ul>
+                </div>           
+
+                <div id="modal-profile-authorisation">
+                    <form action="#" method="post" class="form">
+                        <div class="form">
+                            <input type="email" name="email" maxlength="255" value="" placeholder="E-mail" required>
+                            <input type="password" name="password" maxlength="255" value="" placeholder="Пароль" required>
+
+                            <button class="btn">Войти</button>
+                        </div>
+                    </form>
+
+                    <a href="#modal-profile-forget" class="forget" data-header="Восстановление пароля">Забыли пароль?</a>
+                </div>
+                <div id="modal-profile-registration">
+                    <form>    
+                        <div class="form">
+                            <input type="email" name="email" maxlength="255" value="" placeholder="E-mail" required>
+                            <input type="password" name="password" maxlength="255" value="" placeholder="Пароль" required>
+                            <input type="password" name="password" maxlength="255" value="" placeholder="Пароль еще раз" required>
+
+                            <div class="cb-line"><input type="checkbox" name="agree" id="modal-profile-agree" checked="checked"><label for="modal-profile-agree">Даю согласие на обработку своих <a href="#">персональных данных</a></label></div>
+
+                            <button class="btn">Зарегистрироваться</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="modal-profile-forget">
+                    <div class="text">Для восстановления пароля, введите email на который зарегестрирован аккаунт</div>
+                    <form>    
+                        <div class="form">
+                            <input type="email" name="email" maxlength="255" value="" placeholder="E-mail" required>
+
+                            <button class="btn">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-wrapper" id="modal-done">
+        <div class="modal">
+            <div class="contents">
+                <div class="modal-close" title="Close"></div>
+
+                <div class="h1">Готово</div>
+
+                <div class="text">
+                    <p>Ссылка на восстановление пароля отправлена на почту</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="assets/js/scripts.js"></script>
 </body>
 </html>

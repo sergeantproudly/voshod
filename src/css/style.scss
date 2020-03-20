@@ -5032,11 +5032,8 @@ footer {
             @extend .rotate-180-start;
 
             @media (max-width: $adaptive-width-tablet) {
-                background-image: url('../images/ico_close_blue.svg');
                 top: 20px;
                 right: 20px;
-                border: 0;
-                @include radius(0);
             }
 
             @media (max-width: $adaptive-width-mobile) {

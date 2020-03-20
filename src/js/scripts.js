@@ -275,4 +275,10 @@ $(document).ready(function(){
 		});
 	}
 
+	$('#btn-login').click(function() {
+		if (__isMobileDesktopSmall) {
+			$('header .close').click();		
+		}
+	});
+
 });

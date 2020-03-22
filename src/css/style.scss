@@ -2176,12 +2176,65 @@ footer {
                 }
             }
         }
+
+        .cb-line {
+                text-align: right;
+                padding: 21px 132px 20px 0;
+                margin: 0 auto;
+
+                @media (max-width: $adaptive-width-tablet-middle) {
+                    margin-bottom: 20px;
+                }
+
+                @media (max-width: $adaptive-width-tablet-small) {
+                    text-align: center;
+                    padding: 13px 0 10px;
+                }
+
+                .ui-checkboxradio-label {
+                    position: relative;
+                    top: 0;
+                    right: 0;
+                    z-index: 1;
+                    font-size: 16px;
+                    font-weight: 400;
+                    padding-left: 27px;
+                    color: $color-text;
+
+                    @media (max-width: $adaptive-width-tablet-middle) {
+                        top: 0;
+                    }
+
+                    @media (max-width: $adaptive-width-tablet-small) {
+                        font-size: 12px;
+                        padding-left: 24px;
+                    }
+
+                    .ui-icon-background {
+                        margin-top: -2px;
+                        width: 16px;
+                        height: 16px;
+                        background-color: #FBFBFB;
+                        @include radius(2px);
+
+                        &.ui-state-checked {
+                            &:after {
+                                width: 10px;
+                                height: 7px;
+                                top: 5px;
+                                left: 3px;
+                                background-size: contain;
+                            }
+                        }
+                    }
+                }
+            }
     }
 }
 .search-form-clear {
     display: none;
     position: absolute;
-    top: 50%;
+    top: 28px;
     right: 278px;
     margin-top: -7px;
     background-image: url('../images/ico_clear.svg');

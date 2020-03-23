@@ -272,6 +272,14 @@ $(document).ready(function(){
 			e.stopPropagation();
 
 			showModal('modal-done');
+
+			setTimeout(function() {
+				// обратно на авторизацию
+				$('#modal-profile .tabs').show();
+				$('#modal-profile-forget').hide();
+				$('#modal-profile .tabs>ul>li:first>a').click();	
+				$('#modal-profile-authorisation').show();
+			}, __animationSpeed);
 		});
 	}
 

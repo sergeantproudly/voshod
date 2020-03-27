@@ -16,6 +16,7 @@ const imagemin = require('gulp-imagemin');
 const jsFiles = [
 	'./src/js/jquery-3.1.1.min.js',
 	'./src/js/jquery-ui.min.js',
+	'./src/js/jquery.editable.select.js',
 	'./src/js/jquery.touchSwipe.min.js',
 	'./src/js/jquery.mousewheel.min.js',
 	'./src/js/jquery.animateNumber.js',
@@ -50,9 +51,11 @@ function styles() {
 
 function scripts() {
 	return gulp.src(jsFiles)
+	/*
 				.pipe(babel({
 					presets: ['@babel/preset-env']
 				}))
+				*/
 				.pipe(concat('scripts.js'))
 				.pipe(uglify({
 					toplevel: true

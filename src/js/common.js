@@ -46,13 +46,6 @@ function initElements(element) {
 			$(select).editableSelect({ 
 				effects: 'fade',
 				source: $(select).attr('source') ? $(select).attr('source') : false
-			}).on('change.editable-select', function(e) {
-				var $holder = $(e.target).closest('.input-holder');
-				if ($holder.find('.es-input').val()) {
-					$(e.target).closest('.input-holder').addClass('focused');
-				} else {
-					$(e.target).closest('.input-holder').removeClass('focused');
-				}
 			});
 
 		// simple select

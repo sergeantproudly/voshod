@@ -120,10 +120,10 @@ input[type="password"] {
     @include box-shadow(0px, 2px, 4px, rgba(0, 0, 0, 0.18));
     @include radius(5px);
 
-    &::-webkit-input-placeholder { color: #C0C0C0; }
-    &::-moz-placeholder { color: #C0C0C0; }
-    &:-moz-placeholder { color: #C0C0C0; }
-    &:-ms-input-placeholder { color: #C0C0C0; }
+    &::-webkit-input-placeholder { color: #C1C1C1; }
+    &::-moz-placeholder { color: #C1C1C1; }
+    &:-moz-placeholder { color: #C1C1C1; }
+    &:-ms-input-placeholder { color: #C1C1C1; }
 }
 textarea {
     font-family: 'Circe', 'Arial';
@@ -140,10 +140,10 @@ textarea {
     @include box-shadow(0px, 2px, 4px, rgba(0, 0, 0, 0.18));
     @include radius(5px);
 
-    &::-webkit-input-placeholder { color: #C0C0C0; }
-    &::-moz-placeholder { color: #C0C0C0; }
-    &:-moz-placeholder { color: #C0C0C0; }
-    &:-ms-input-placeholder { color: #C0C0C0; }
+    &::-webkit-input-placeholder { color: #C1C1C1; }
+    &::-moz-placeholder { color: #C1C1C1; }
+    &:-moz-placeholder { color: #C1C1C1; }
+    &:-ms-input-placeholder { color: #C1C1C1; }
 }
 
 
@@ -2700,6 +2700,11 @@ footer {
                 line-height: 1.5;
                 font-size: 14px;
                 margin-bottom: 19px;
+
+                a {
+                    text-decoration: none;
+                    color: $color-text;
+                }
             }
 
             em {
@@ -5364,6 +5369,43 @@ footer {
             }
         }
 
+        #modal-document > & {
+            width: 860px;
+            padding: 53px 42px;
+
+            @media (max-width: $adaptive-width-tablet-small) {
+                padding: 45px 50px 40px;
+            }
+
+            @media (max-width: $adaptive-width-mobile) {
+                padding: 40px 25px;
+            }
+
+            h1,
+            .h1 {
+                margin-bottom: 35px;
+
+                @media (max-width: $adaptive-width-mobile) {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .text {
+                overflow-y: auto;
+                font-size: 16px;
+                line-height: 1.5;
+                max-height: 520px;
+
+                @media (max-width: $adaptive-width-tablet-small) {
+                    font-size: 14px;
+                }
+
+                p {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
         #modal-done > & {
             text-align: center;
             width: 449px;
@@ -5408,6 +5450,73 @@ footer {
                 @media (max-width: $adaptive-width-mobile) {
                     font-size: 14px;
                 }
+            }
+        }
+    }
+}
+
+.es {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        background: url("../images/dd_selector.svg");
+        width: 11px;
+        height: 6px;
+        margin-top: -3px;
+    }
+
+    input.es-input {
+        height: 38px;
+        padding: 10px 15px;
+        width: 100%;
+        color: #585858;
+        font-size: 14px;
+        @include radius(3px);
+    }
+
+    .es-list {
+        position: absolute; 
+        padding: 10px 0;
+        margin: 0; 
+        border: 0; 
+        display: none; 
+        z-index: 1000; 
+        background: #fff;
+        /*min-width: 320px;*/
+        max-height: 350px;
+        overflow-y: auto;
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
+        @extend .radius-sm;
+
+        li {
+            display: block; 
+            padding: 9px 35px 9px 12px !important;
+            margin: 0 !important;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: #151515 !important;
+            position: relative;
+            cursor: pointer;
+
+            &.selected {
+                &:after {
+                    content: '';
+                    width: 12px;
+                    height: 10px;
+                    background-image: url("../images/ico_v.svg");
+                    position: absolute;
+                    top: 9px;
+                    right: 12px;
+                    display: block;
+                }
+            }
+
+            &:hover {
+                background: #F6F6F6;
             }
         }
     }

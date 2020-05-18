@@ -1,5 +1,5 @@
-var __widthMobile = 1280;
-var __widthMobileDesktopSmall = 1280;
+var __widthMobile = 1279;
+var __widthMobileDesktopSmall = 1279;
 var __widthMobileTablet = 1024;
 var __widthMobileTabletMiddle = 768;
 var __widthMobileTabletSmall = 600;
@@ -91,7 +91,8 @@ $(document).ready(function(){
 
     // BURGER
 	$('#menu-holder').click(function() {
-		if ((__isMobileDesktopSmall) && !$('body').hasClass('mobile-opened')) {
+		//if ((__isMobileDesktopSmall) && !$('body').hasClass('mobile-opened')) {
+		if (($('#menu-holder').css('backgroundImage') != 'none') && !$('body').hasClass('mobile-opened')) {
 			if (!$('header').children('.close').data('inited')) {
 				if (!$('header>.close').length) {
 					$('header').append('<div class="close"></div>');

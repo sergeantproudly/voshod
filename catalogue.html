@@ -65,52 +65,135 @@
             </div>
         </div>
 
-        <div class="wnd" id="catalogue">
-            <h2 class="title">Перечень фондов ГА РФ</h2>
+        <div id="catalogue">
+            <section class="wnd col-main">
+                <h2 class="title">Перечень фондов ГА РФ</h2>
 
-            <ul>
-                <li>
-                    <a href="#" class="important">Совет Министров СССР (СМ СССР)</a>
-                    <ul>
-                        <li>
-                            <a href="#">Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.</a>
-                            <ul>
-                                <li><a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a></li>
-                                <li><a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a></li>
-                                <li><a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.</a></li>
-                        <li><a href="#">Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.</a></li>
-                        <li>
-                            <a href="#">Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.</a>
-                            <ul>
-                                <li>
-                                    <a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a>
-                                            <ul>
-                                                <li><a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a>
-                                            <ul>
-                                                <li><span>Оригиналы постановлений СНК СССР №№ 198–345</span></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#">Государственный комитет обороны СССР (ГКО)</a></li>
-            </ul>    
+                <ul>
+                    <li>
+                        <a href="#" class="important">Совет Министров СССР (СМ СССР)</a>
+                        <ul>
+                            <li>
+                                <a href="#">Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.</a>
+                                <ul>
+                                    <li><a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a></li>
+                                    <li><a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a></li>
+                                    <li><a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.</a></li>
+                            <li><a href="#">Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.</a></li>
+                            <li>
+                                <a href="#">Протоколы и постановления Совета Народных Комиссаров и Совета Министров СССР (подлинники и копии). 1923–1991 гг.</a>
+                                <ul>
+                                    <li>
+                                        <a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a>
+                                                <ul>
+                                                    <li><a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Оригиналы постановлений СНК СССР №№ 198–345</a>
+                                                <ul>
+                                                    <li><span>Оригиналы постановлений СНК СССР №№ 198–345</span></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Государственный комитет обороны СССР (ГКО)</a></li>
+                </ul> 
+            </section> 
+
+            <aside class="col-right">                
+                <div id="filter">
+                    <h2>Фильтр</h2>
+
+                    <form action="#" method="post">
+                        <div class="group">
+                            <label for="filter-document-type">Архив</label>
+                            <select id="filter-document-type" name="document-type" placeholder="Выбрать">
+                                <option>Тип1</option>
+                                <option>Тип2</option>
+                                <option>Тип3</option>
+                                <option>Тип4</option>
+                                <option>Тип5</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <label for="filter-year">Номер фонда</label>
+                            <select id="filter-year" name="year" placeholder="Выбрать">
+                                <option>1990</option>
+                                <option>1995</option>
+                                <option>2000</option>
+                                <option>2005</option>
+                                <option>2010</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <label for="filter-gov-dep">Номер дела</label>
+                            <select id="filter-gov-dep" name="gov-dep" placeholder="Выбрать">
+                                <option>Орган1</option>
+                                <option>Орган2</option>
+                                <option>Орган3</option>
+                                <option>Орган4</option>
+                                <option>Орган5</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <label for="filter-territory">Организация</label>
+                            <select id="filter-territory" name="territory" placeholder="Выбрать">
+                                <option>Территория1</option>
+                                <option>Территория2</option>
+                                <option>Территория3</option>
+                                <option>Территория4</option>
+                                <option>Территория5</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <label for="filter-archive">Тип документа</label>
+                            <select id="filter-archive" name="archive" placeholder="Выбрать">
+                                <option>Архив1</option>
+                                <option>Архив2</option>
+                                <option>Архив3</option>
+                                <option>Архив4</option>
+                                <option>Архив5</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <label for="filter-archive2">Год документа</label>
+                            <select id="filter-archive2" name="archive2" placeholder="Выбрать">
+                                <option>Архив1</option>
+                                <option>Архив2</option>
+                                <option>Архив3</option>
+                                <option>Архив4</option>
+                                <option>Архив5</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <label for="filter-archive3">Место создания</label>
+                            <select id="filter-archive3" name="archive3" placeholder="Выбрать">
+                                <option>Архив1</option>
+                                <option>Архив2</option>
+                                <option>Архив3</option>
+                                <option>Архив4</option>
+                                <option>Архив5</option>
+                            </select>
+                        </div>
+                        <button class="btn filter-btn">Показать 345</button>
+                        <div class="filter-close"></div>
+                    </form>
+                </div>
+            </aside>  
         </div>
     </div>
 

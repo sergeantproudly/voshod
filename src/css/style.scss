@@ -3459,6 +3459,17 @@ footer {
             }
         }
     }
+
+    .col-right {
+        #filter {
+            margin-top: 0;
+        }
+
+        h2, 
+        .h2 {
+            border-bottom: 0;
+        }
+    }
 }
 
 #back-link {
@@ -5233,7 +5244,7 @@ footer {
     & > .contents {
         background-color: #F1EFED;
         width: 660px;
-        margin: 5% auto;
+        margin: 2% auto;
         padding: 42px 50px 47px;
         line-height: 1.43;
         position: relative;
@@ -5436,6 +5447,7 @@ footer {
                 font-size: 16px;
                 line-height: 1.5;
                 max-height: 520px;
+                max-height: 65vh;
 
                 @media (max-width: $adaptive-width-tablet-small) {
                     font-size: 14px;

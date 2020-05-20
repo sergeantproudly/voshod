@@ -66,6 +66,10 @@
         </div>
 
         <div id="catalogue">
+            <div class="tools">
+                <div class="filter-tablet">Фильтр</div>
+            </div>   
+
             <section class="wnd col-main">
                 <h2 class="title">Перечень фондов ГА РФ</h2>
 
@@ -189,7 +193,13 @@
                                 <option>Архив5</option>
                             </select>
                         </div>
-                        <button class="btn filter-btn">Показать 345</button>
+                        <div class="group">
+                            <label for="filter-gov-dep">Это поле</label>
+                            <input type="text" name="field" placeholder="Поле" maxlength="255">
+                        </div>
+                        <div class="btn-line">
+                            <button class="btn filter-btn">Показать 345</button>
+                        </div>
                         <div class="filter-close"></div>
                     </form>
                 </div>

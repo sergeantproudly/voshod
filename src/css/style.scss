@@ -120,10 +120,10 @@ input[type="password"] {
     @include box-shadow(0px, 2px, 4px, rgba(0, 0, 0, 0.18));
     @include radius(5px);
 
-    &::-webkit-input-placeholder { color: #C1C1C1; }
-    &::-moz-placeholder { color: #C1C1C1; }
-    &:-moz-placeholder { color: #C1C1C1; }
-    &:-ms-input-placeholder { color: #C1C1C1; }
+    &::-webkit-input-placeholder { color: #C1C1C1; opacity: 1; }
+    &::-moz-placeholder { color: #C1C1C1; opacity: 1; }
+    &:-moz-placeholder { color: #C1C1C1; opacity: 1; }
+    &:-ms-input-placeholder { color: #C1C1C1; opacity: 1; }
 }
 textarea {
     font-family: 'Circe', 'Arial';
@@ -2472,6 +2472,37 @@ footer {
         background-color: #fff;
     }
 }
+.filter-tablet {
+    display: none;
+    cursor: pointer;
+    @extend .transition-color;
+
+    @media (max-width: $adaptive-width-tablet) {
+        text-align: right;
+        display: block;
+        margin-top: -16px;
+    }
+
+    @media (max-width: $adaptive-width-mobile) {
+        font-size: 14px;
+    }
+
+    &:before {
+        content: '';
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        margin: -4px 7px 0 0;
+        background-image: url('../images/ico_filter.svg');
+        background-size: contain;
+    }
+
+    &:hover {
+        color: #666;
+        @extend .transition-color;
+    }
+}
 #results-list {
     .tools {
         font-size: 14px;
@@ -2616,38 +2647,6 @@ footer {
                 .ui-selectmenu-text {
                     margin-right: 8px;
                 }
-            }
-        }
-
-        .filter-tablet {
-            display: none;
-            cursor: pointer;
-            @extend .transition-color;
-
-            @media (max-width: $adaptive-width-tablet) {
-                text-align: right;
-                display: block;
-                margin-top: -16px;
-            }
-
-            @media (max-width: $adaptive-width-mobile) {
-                font-size: 14px;
-            }
-
-            &:before {
-                content: '';
-                display: inline-block;
-                width: 14px;
-                height: 14px;
-                vertical-align: middle;
-                margin: -4px 7px 0 0;
-                background-image: url('../images/ico_filter.svg');
-                background-size: contain;
-            }
-
-            &:hover {
-                color: #666;
-                @extend .transition-color;
             }
         }
     }
@@ -3013,8 +3012,10 @@ footer {
         @media (max-width: $adaptive-width-tablet) {
             font-size: 20px;
             max-width: 336px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
         }
 
         &:before {
@@ -3056,12 +3057,34 @@ footer {
         font-size: 14px;
         border: 0;
         @include radius(5px);
-        @include box-shadow(0px, 2px, 4px, rgba(0, 0, 0, 0.18))
+        @include box-shadow(0px, 2px, 4px, rgba(0, 0, 0, 0.18));
         padding: 12px; 
 
         @media (max-width: $adaptive-width-tablet) {
             height: 55px;
             padding-top: 17px;
+        }
+
+        @media (max-width: $adaptive-width-mobile) {
+            height: 40px;
+            padding-top: 10px;
+        }
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="num"] {
+        width: 100%;
+        height: 38px;
+        font-size: 14px;
+        @include radius(5px);
+        @include box-shadow(0px, 2px, 4px, rgba(0, 0, 0, 0.18));
+        padding: 15px 12px 10px; 
+
+        @media (max-width: $adaptive-width-tablet) {
+            height: 55px;
+            padding-top: 14px;
         }
 
         @media (max-width: $adaptive-width-mobile) {
@@ -3169,6 +3192,15 @@ footer {
 }
 
 #catalogue {
+    .filter-tablet {
+        text-align: left;        
+        margin-bottom: 15px;
+
+        @media (max-width: $adaptive-width-tablet-small) {
+            padding-top: 25px;
+        }
+    }
+
     h2,
     .h2 {
         color: #000;

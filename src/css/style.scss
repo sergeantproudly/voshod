@@ -5606,3 +5606,31 @@ footer {
         }
     }
 }
+
+.ui-autocomplete {
+    background-color: #fff;
+    @include box-shadow(0px, 2px, 4px, rgba(0, 0, 0, 0.18));
+    @include radius(8px);    
+    max-height: 350px;
+    max-height: 50vh; 
+    overflow-y: auto;
+
+    & > li {
+        text-align: left;
+        display: block;
+        padding: 12px 16px;
+        background-color: #fff;
+
+        &:hover {
+            background-color: #f3f3f3;
+        }
+
+        &:first-child {
+            @include radius-t(8px);
+        }
+
+        &:last-child {
+            @include radius-b(8px);
+        }
+    }
+}

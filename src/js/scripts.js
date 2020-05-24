@@ -204,12 +204,12 @@ $(document).ready(function(){
 	// SEARCH
 	if ($('#search-top-keyword').length) {
 		var replaceWord = '%keyword%';
-		var searchUrl = 'http://документыпобеды.рф:50080/searchService/api/v1/search?query=' + replaceWord + '&limit=50';
-		var checkspellingUrl = 'http://документыпобеды.рф:50080/searchService/api/v1/checkspelling?query=' + replaceWord + '&limit=50';
+		var searchUrl = 'https://документыпобеды.рф/searchService/api/v1/search?query=' + replaceWord + '&limit=50';
+		var checkspellingUrl = 'https://документыпобеды.рф/searchService/api/v1/checkspelling?query=' + replaceWord + '&limit=50';
 		var suggestionsData = [];
 		var checkspellingData = [];
 		var nextWords = [];
-		var currWords = '';	
+		var currWords = '';
 
 		$('#search-top-keyword').autocomplete({
 			appendTo: $('#search-top-keyword').closest('form').parent(),
@@ -227,53 +227,42 @@ $(document).ready(function(){
 
 				if (!nextWords.length) {
 					// FIXME
-					/*
 			        $.ajax({
 			        	url: searchUrl.replace(replaceWord, lastWord),
 			        	dataType: 'json',
 			            success: function(data) {
-			            	suggestionsData = data;			            	
+			            	suggestionsData = data;
+			            	
+			            	// найдены варианты поиска
+					        if (typeof(suggestionsData.suggestions) != 'undefined' 
+					        	&& suggestionsData.suggestions.length) {
+					        	response($.map(suggestionsData.suggestions, function(item) {
+						        	return {
+						        		label: item.autoComplete,
+						        		value: (currWords ? (currWords + ' ') : '') + item.autoComplete
+						        	};
+						        }));
+
+					        // не найдены варианты поиска, пробуем checkspelling
+					        } else {
+					        	// FIXME
+						        $.ajax({
+						        	url: checkspellingUrl.replace(replaceWord, lastWord),
+						        	dataType: 'json',
+						            success: function(data) {
+						            	checkspellingData = data;
+						            	
+						            	response($.map(checkspellingData.words, function(item) {
+								        	return {
+								        		label: item,
+								        		value: (currWords ? (currWords + ' ') : '') + item
+								        	};
+								        }));
+						            }
+						        });
+					        }
 			            }
 			        });
-			        */
-
-			        // тестовая строка
-			        suggestionsData = JSON.parse('{"suggestions":[{"autoComplete":"химической","nextWords":["защиты","промышленности","Промышленности"]},{"autoComplete":"военно-химической","nextWords":["защиты"]},{"autoComplete":"химических","nextWords":["продуктов"]},{"autoComplete":"противохимической","nextWords":["защиты"]},{"autoComplete":"химического","nextWords":["вооружения"]},{"autoComplete":"электрохимического","nextWords":["комбината"]},{"autoComplete":"химическом","nextWords":["комбинате","заводе"]},{"autoComplete":"электрохимическом","nextWords":["комбинате"]},{"autoComplete":"лесохимической","nextWords":["промышленности"]}]}');
-			        //suggestionsData = JSON.parse('{}');
-
-			        // найдены варианты поиска
-			        if (typeof(suggestionsData.suggestions) != 'undefined' 
-			        	&& suggestionsData.suggestions.length) {
-			        	response($.map(suggestionsData.suggestions, function(item) {
-				        	return {
-				        		label: item.autoComplete,
-				        		value: (currWords ? (currWords + ' ') : '') + item.autoComplete
-				        	};
-				        }));
-
-			        // не найдены варианты поиска, пробуем checkspelling
-			        } else {
-			        	// FIXME
-						/*
-				        $.ajax({
-				        	url: checkspellingUrl.replace(replaceWord, lastWord),
-				        	dataType: 'json',
-				            success: function(data) {
-				            	checkspellingData = data;
-				            }
-				        });
-				        */
-
-				        // тестовая строка
-				        checkspellingData = JSON.parse('{"isOk":true,"words":["химичь","схимичь","химича","химичу"]}');
-
-				        response($.map(checkspellingData.words, function(item) {
-				        	return {
-				        		label: item,
-				        		value: (currWords ? (currWords + ' ') : '') + item
-				        	};
-				        }));
-			        }
 
 				} else {
 			        response($.map(nextWords, function(item) {

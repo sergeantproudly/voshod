@@ -219,11 +219,9 @@ $(document).ready(function(){
 				var words = request.term.split(' ');
 				var lastWord = words[words.length - 1];
 
-				c = '';
-				$.each(currWords.split(' '), function(index, word) {
-					if (word == words[index]) c += (c ? ' ' : '') + word;
-				});
-				currWords = c;
+				if (!$('#search-top-keyword').data('next-word-expected')) words.pop();
+				currWords = words.length ? words.join(' ') : '';
+				$('#search-top-keyword').data('next-word-expected', false);
 
 				if (!nextWords.length) {
 					// FIXME
@@ -288,7 +286,7 @@ $(document).ready(function(){
 			    	});
 
 			    	// сразу предлагаем варианты из nextWords
-			    	$('#search-top-keyword').keydown();
+			    	$('#search-top-keyword').data('next-word-expected', true).keydown();
 		    	} else {
 		    		nextWords = [];
 		    	}

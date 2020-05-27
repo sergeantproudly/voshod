@@ -3339,6 +3339,12 @@ footer {
                             a {
                                 margin-bottom: 25px;
                             }
+
+                            &.document {
+                                &:before {
+                                    background-image: url('../images/ico_doc.svg');
+                                }
+                            }
                         }
                     }
                 }

@@ -201,6 +201,22 @@ $(document).ready(function(){
 		});
 	});
 
+	/*
+	// DELETE THIS
+	var authUrl = 'https://документыпобеды.рф/searchService/api/v1/search';
+	var authUsername = 'proj.arch2019';
+	var authPassword = 'VDo7kWEp';	
+	$.ajax({
+	    xhrFields: {
+	        withCredentials: true
+	    },
+	    beforeSend: function (xhr) {
+	        xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa(authUsername + ':' + authPassword));
+	    },
+	    url: authUrl
+	});
+	*/
+
 	// SEARCH
 	if ($('#search-top-keyword').length) {
 		var replaceWord = '%keyword%';
@@ -215,61 +231,76 @@ $(document).ready(function(){
 			appendTo: $('#search-top-keyword').closest('form').parent(),
 			position: {my: 'left top+8'},
 			minLength: 3,
+			delay: 150,
 			source: function(request, response) {
-				var words = request.term.split(' ');
-				var lastWord = words[words.length - 1];
+				function process(request, response) {
+					var words = request.term.split(' ');
+					var lastWord = words[words.length - 1];
 
-				if (!$('#search-top-keyword').data('next-word-expected')) words.pop();
-				currWords = words.length ? words.join(' ') : '';
-				$('#search-top-keyword').data('next-word-expected', false);
+					if (!$('#search-top-keyword').data('next-word-expected')) words.pop();
+					currWords = words.length ? words.join(' ') : '';
+					$('#search-top-keyword').data('next-word-expected', false);
 
-				if (!nextWords.length) {
-					// FIXME
-			        $.ajax({
-			        	url: searchUrl.replace(replaceWord, lastWord),
-			        	dataType: 'json',
-			            success: function(data) {
-			            	suggestionsData = data;
-			            	
-			            	// найдены варианты поиска
-					        if (typeof(suggestionsData.suggestions) != 'undefined' 
-					        	&& suggestionsData.suggestions.length) {
-					        	response($.map(suggestionsData.suggestions, function(item) {
-						        	return {
-						        		label: item.autoComplete,
-						        		value: (currWords ? (currWords + ' ') : '') + item.autoComplete
-						        	};
-						        }));
+					if (!nextWords.length) {
+						// FIXME
+				        $.ajax({
+				        	url: searchUrl.replace(replaceWord, lastWord),
+				        	dataType: 'json',
+				            success: function(data) {
+				            	suggestionsData = data;
+				            	
+				            	// найдены варианты поиска
+						        if (typeof(suggestionsData.suggestions) != 'undefined' 
+						        	&& suggestionsData.suggestions.length) {
+						        	response($.map(suggestionsData.suggestions, function(item) {
+							        	return {
+							        		label: item.autoComplete,
+							        		value: (currWords ? (currWords + ' ') : '') + item.autoComplete
+							        	};
+							        }));
 
-					        // не найдены варианты поиска, пробуем checkspelling
-					        } else {
-					        	// FIXME
-						        $.ajax({
-						        	url: checkspellingUrl.replace(replaceWord, lastWord),
-						        	dataType: 'json',
-						            success: function(data) {
-						            	checkspellingData = data;
-						            	
-						            	response($.map(checkspellingData.words, function(item) {
-								        	return {
-								        		label: item,
-								        		value: (currWords ? (currWords + ' ') : '') + item
-								        	};
-								        }));
-						            }
-						        });
-					        }
-			            }
-			        });
+						        // не найдены варианты поиска, пробуем checkspelling
+						        } else {
+						        	// FIXME
+							        $.ajax({
+							        	url: checkspellingUrl.replace(replaceWord, lastWord),
+							        	dataType: 'json',
+							            success: function(data) {
+							            	checkspellingData = data;
+							            	
+							            	response($.map(checkspellingData.words, function(item) {
+									        	return {
+									        		label: item,
+									        		value: (currWords ? (currWords + ' ') : '') + item
+									        	};
+									        }));
+							            }
+							        });
+						        }
+				            }
+				        });
 
-				} else {
-			        response($.map(nextWords, function(item) {
-			        	return {
-			        		label: item,
-			        		value: (currWords ? (currWords + ' ') : '') + item
-			        	};
-			        }));
+					} else {
+						var filtered = $.grep(nextWords, function(item) {
+				        	return !lastWord || lastWord == words[words.length - 1] || item.includes(lastWord);
+				       	});
+				       	if (filtered.length) {
+				       		response($.map(filtered, function(item) {			        	
+					        	return {
+						        	label: item,
+						        	value: (currWords ? (currWords + ' ') : '') + item
+						        };		        	
+					        }));
+				       	} else {
+				       		nextWords = [];
+
+				       		// запускаем запрос заново
+				       		$('#search-top-keyword').data('next-word-expected', false);
+				       		process(request, response);
+				       	}	        
+					}
 				}
+				process(request, response);
 		    },
 		    select: function(e, ui) {
 		    	// если выбрали предложенный вариант

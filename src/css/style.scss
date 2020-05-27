@@ -3296,6 +3296,7 @@ footer {
 
                     &:before {
                         top: -10px; 
+                        background-image: url('../images/ico_folder_f.svg');
 
                         @media (max-width: $adaptive-width-mobile) {
                             top: -5px;
@@ -3339,8 +3340,10 @@ footer {
                             a {
                                 margin-bottom: 25px;
                             }
+                        }
 
-                            &.document {
+                        ul {
+                            li {
                                 &:before {
                                     background-image: url('../images/ico_doc.svg');
                                 }

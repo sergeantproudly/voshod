@@ -764,9 +764,9 @@ button.ui-button::-moz-focus-inner {
 
 }
 .ui-selectmenu-menu .ui-menu li{
-	padding: 9px 12px;
+	padding: 9px 12px !important;
 	margin: 0;
-	font-size: 14px;
+	font-size: 14px !important;
 	color: #222;
 	position: relative;
 }

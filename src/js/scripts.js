@@ -432,5 +432,9 @@ $(document).ready(function(){
 			}
 		});
 	}
+	// тестовое одписание на событие очистки
+	$('#filter-archive2').on('clear', function() {
+		console.log('editable select cleared');
+	});
 
 });

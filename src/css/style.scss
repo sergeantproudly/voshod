@@ -5616,6 +5616,7 @@ footer {
     }
 
     .es-clear {
+        visibility: hidden;
         position: absolute;
         top: 50%;
         right: 24px;
@@ -5632,6 +5633,7 @@ footer {
         @extend .transition-opacity;
 
         &.active {
+            visibility: visible;
             opacity: .6;
             @extend .transition-opacity;
 

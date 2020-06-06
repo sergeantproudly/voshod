@@ -282,6 +282,7 @@
 				that.es.$input.val('');
 				that.es.filter();
 				$(this).removeClass('active');
+				that.es.$select.trigger('clear');
 			});
 	};
 	EditableSelectUtility.prototype.highlight = function (index) {

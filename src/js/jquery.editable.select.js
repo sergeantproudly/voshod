@@ -186,7 +186,8 @@
 		this.$select.removeData('editable-select');
 	};
 	EditableSelect.prototype.checkVal = function () {
-		this.$clear.toggleClass('active', this.$input.val());
+		if (this.$input.val()) this.$clear.addClass('active');
+		else this.$clear.removeClass('active');
 	};
 	
 	// Utility

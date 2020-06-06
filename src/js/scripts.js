@@ -414,14 +414,22 @@ $(document).ready(function(){
 	});
 
 	// EDITABLE SELECT REINIT TEST
+	var reinited = false;
 	if ($('#filter-archive2').length) {
-		$('#filter-archive2').next('.es').mousedown(function() {
-			// Вставляем новые опции в оригинальный селект
-			$('#filter-archive2').html('<option>Новая опция 1</option><option>Новая опция 2</option><option>Новая опция 3</option>');
-			// Делаем реинит
-			editableSelectReinit($('#filter-archive2'));
-			// Эмулируем клик для появления дропдауна
-			$('#filter-archive2').next('.es').children('.es-input').trigger('input');
+		$('#filter-archive2').next('.es').mousedown(function(e) {
+			if (!reinited) {
+				e.preventDefault();
+				e.stopPropagation();
+
+				// Вставляем новые опции в оригинальный селект
+				$('#filter-archive2').html('<option>Новая опция 1</option><option>Новая опция 2</option><option>Новая опция 3</option>');
+				// Делаем реинит
+				editableSelectReinit($('#filter-archive2'));
+				// Эмулируем фокус для появления дропдауна
+				$('#filter-archive2').next('.es').children('.es-input').focus();
+
+				reinited = true;
+			}
 		});
 	}
 

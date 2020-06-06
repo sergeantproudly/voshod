@@ -15,6 +15,7 @@
 		this.$wrapper = $('<div class="es"></div>');
 		this.$input  = $('<input type="text" autocomplete="off">');
 		this.$list   = $('<ul class="es-list">');
+		this.$clear  = $('<div class="es-clear" title="Очистить"></div>');
 		this.utility = new EditableSelectUtility(this);
 		this.tid;
 		
@@ -30,11 +31,13 @@
 		this.$select.after(this.$wrapper);
 		this.$input.appendTo(this.options.appendTo || this.$wrapper);
 		this.$list.appendTo(this.options.appendTo || this.$wrapper);
+		this.$clear.appendTo(this.options.appendTo || this.$wrapper);
 		
 		// initalization
 		this.utility.initialize();
 		this.utility.initializeList();
 		this.utility.initializeInput();
+		this.utility.initializeClear();
 
 		this.$select.hide();
 		this.utility.trigger('created');
@@ -141,6 +144,7 @@
 		if (this.options.filter) this.hide();
 		this.filter();
 		this.utility.trigger('select', $li);
+		this.checkVal();
 	};
 	EditableSelect.prototype.add = function (text, index, attrs, data) {
 		var $li     = $('<li>').html(text);
@@ -180,6 +184,9 @@
 		this.$input.replaceWith(this.$select);
 		this.$list.remove();
 		this.$select.removeData('editable-select');
+	};
+	EditableSelect.prototype.checkVal = function () {
+		this.$clear.toggleClass('active', this.$input.val());
 	};
 	
 	// Utility
@@ -263,7 +270,18 @@
 					that.highlight(0);
 					break;
 			}
+			that.es.checkVal();
 		});
+
+	};
+	EditableSelectUtility.prototype.initializeClear = function () {
+		var that = this;
+		that.es.$clear
+			.on('click', function () {
+				that.es.$input.val('');
+				that.es.filter();
+				$(this).removeClass('active');
+			});
 	};
 	EditableSelectUtility.prototype.highlight = function (index) {
 		var that = this;

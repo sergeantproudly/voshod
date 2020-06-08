@@ -3192,6 +3192,8 @@ footer {
 }
 
 #catalogue {
+    position: relative;
+
     .filter-tablet {
         text-align: left;        
         margin-bottom: 15px;
@@ -3511,6 +3513,44 @@ footer {
             border-bottom: 0;
         }
     }
+
+    .col-main {
+        position: relative;
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');
+        @extend .transition-all;
+    }
+
+    #catalogue-loader {
+        content: '';
+        opacity: 0;
+        visibility: hidden;
+        display: block;
+        position: absolute;
+        top: 200px;
+        top: 40vh;
+        left: 32%;
+        margin-left: -32px;
+        width: 64px;
+        height: 64px;
+        @extend .transition-all;
+    }
+
+    &.loading {
+        .col-main {
+            -webkit-filter: blur(3px);
+            filter: blur(3px);
+            filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+            @extend .transition-all;
+        }
+
+        #catalogue-loader {
+            opacity: .7;
+            visibility: visible;
+            @extend .transition-all;
+        }
+    }    
 }
 
 #back-link {

@@ -437,4 +437,50 @@ $(document).ready(function(){
 		console.log('editable select cleared');
 	});
 
+	// CATALOGUE SEARCH LOADER DEMO
+	if ($('#catalogue').length) {
+		$('#catalogue').append('<div id="catalogue-loader"></div>');
+		$loader = $('#catalogue-loader');
+		
+		var cImageSrc = 'assets/images/sprites.png';
+		var cImageTimeout = false;	
+		window.cTotalFrames = 18;
+		window.cFrameWidth = 64;
+		window.cSpeed = 9;
+
+		var loaderFun = function (){cImageTimeout=setTimeout(function() {
+			$('#catalogue-loader').html('<canvas id="canvas" width="'+$loader.width()+'" height="'+$loader.height()+'"><p>Your browser does not support the canvas element.</p></canvas>');
+			
+			//FPS = Math.round(100/(maxSpeed+2-speed));
+			FPS = Math.round(100 / window.cSpeed);
+			SECONDS_BETWEEN_FRAMES = 1 / FPS;
+			g_GameObjectManager = null;
+			g_run = genImage;
+
+			g_run.width = window.cTotalFrames * window.cFrameWidth;
+			genImage.onload = function() {
+				cImageTimeout=setTimeout(loaderFun, 0);
+			};
+			initCanvas();
+		}, 0)};
+
+		clearTimeout(cImageTimeout);
+		cImageTimeout=0;
+		genImage = new Image();
+		genImage.onload = loaderFun;
+		genImage.onerror = new Function('alert(\'Could not load the image\')');
+		genImage.src = cImageSrc;
+
+		$('#search-top form').submit(function(e) {
+			// FIXME
+			e.preventDefault();
+			e.stopPropagation();
+
+			$('#catalogue').addClass('loading');
+			setTimeout(function() {
+				$('#catalogue').removeClass('loading');
+			}, 4000);
+		});
+	}
+
 });

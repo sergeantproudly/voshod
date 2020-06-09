@@ -447,6 +447,7 @@ $(document).ready(function(){
 		window.cTotalFrames = 18;
 		window.cFrameWidth = 64;
 		window.cSpeed = 9;
+		window.g_run = false;
 
 		var loaderFun = function (){cImageTimeout=setTimeout(function() {
 			$('#catalogue-loader').html('<canvas id="canvas" width="'+$loader.width()+'" height="'+$loader.height()+'"><p>Your browser does not support the canvas element.</p></canvas>');

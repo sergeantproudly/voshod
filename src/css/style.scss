@@ -3212,6 +3212,10 @@ footer {
 #catalogue {
     position: relative;
 
+    &.static {
+        position: static;
+    }
+
     .filter-tablet {
         text-align: left;        
         margin-bottom: 15px;

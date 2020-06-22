@@ -346,11 +346,14 @@ $(document).ready(function(){
 
 	$('.filter-tablet').click(function() {
 		$('html').addClass('html-filter');
+		$('.col-right').closest('#catalogue').addClass('static');
 		$('.col-right').stop().fadeIn(350).css('display', 'table');
 	});
 	$('.filter-close, .filter-btn').click(function() {
 		$('html').removeClass('html-filter');
-		$('.col-right').stop().fadeOut(350);
+		$('.col-right').stop().fadeOut(350, function() {
+			$('.col-right').closest('#catalogue').removeClass('static');
+		});
 	});
 
 	// SOCIALS
